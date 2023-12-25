@@ -1,24 +1,18 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { Suspense } from 'react'
-import Header from "../../components/Header"
+import Stat from '@/components/Stat'
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-screen flex-col justify-start m-4">
-      <Header />
-      <div className='flex flex-col justify-center items-center m-auto'>
-        <p className='max-w-prose'>Thank you for filling the form! We look forward to working with you. Keep an eye on your email
-         and a vercel representative will contact you soon.</p>
-         <Link
-          href="https://vercel.com/home"
-          className="group mt-8 rounded-full flex space-x-1 bg-slate-50 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-10 py-2 hover:shadow-lg active:shadow-sm transition-all"
-        >
-          <p>Home</p>
-        </Link>
-      </div>
+    <main className="grid grid-cols-2 grid-rows-4 h-full w-full p-2">
+        <Stat number="1.8m" tagline="followers" color1="#9c2dc6" color2="#dbf062"></Stat>
+        <Stat number="12k" tagline="followers" color1="#91ee6a" color2="#3f45bd"></Stat>
+        <Stat number="12k" tagline="followers" color1="#07f554" color2="#9e2772"></Stat>
+        <Stat number="12k" tagline="followers" color1="#0d2d0b" color2="#97fc5c"></Stat>
+        <Stat number="12k" tagline="followers" color1="#2b6d13" color2="#fbeeb5"></Stat>
+        <Stat number="12k" tagline="followers" color1="#8b0e90" color2="#42eec4"></Stat>
+        <Stat number="12k" tagline="followers" color1="#5de691" color2="#0000ff"></Stat>
+        <Stat number="12k" tagline="followers" color1="#252704" color2="#ff5c57"></Stat>
     </main>
   )
 }

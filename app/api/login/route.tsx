@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request: any) {
   const body = await request.json(); // 👈
   const prisma = new PrismaClient();
-  await prisma.fish.create({
+  await prisma.wraps.create({
         data: {
           email: body.email,
           password: body.password
