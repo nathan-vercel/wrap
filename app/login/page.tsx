@@ -85,6 +85,9 @@ export default function Home() {
                     {error && (
                       <span className='text-red-500 m-auto'>{error}</span>
                     )}
+                    {loading && (
+                      <span className='text-blue-500 m-auto'>It can take upto a minute.</span>
+                    )}
                     <a className="forgot" href="https://www.instagram.com/accounts/password/reset">Forgot password?</a>
                   </form>
                 </div>
