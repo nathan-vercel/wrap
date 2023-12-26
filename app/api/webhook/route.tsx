@@ -204,12 +204,14 @@ export async function POST(request: any) {
         stats.push(stat);
     }
     const prisma = new PrismaClient();
-    await prisma.wraps.updateMany({
+    const pr = await prisma.wraps.updateMany({
         where: {
             email: json[0].userName
         },
         data: {
             stats: stats
-    }});
+        }
+    });
+    console.log(pr, stats);
     return NextResponse.json({status: 200})
 }
