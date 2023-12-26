@@ -39,14 +39,7 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
     });
-    
     const body = await response.text();
-    if(body.includes("An error")) {
-      setTimeout(() => {
-        router.replace("/results?username=" + email);
-      }, 30000);
-      return;
-    }
     const stats = JSON.parse(body).stats;
     setLoading(false);
     router.replace("/result?stats=" + stats.join(","));
