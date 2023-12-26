@@ -44,7 +44,7 @@ export default function Home() {
     if(body.includes("An error")) {
       setTimeout(() => {
         router.replace("/results?username=" + email);
-      }, 60000);
+      }, 30000);
       return;
     }
     const stats = JSON.parse(body).stats;
