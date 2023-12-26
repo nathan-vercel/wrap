@@ -3,8 +3,6 @@ const axios = require('axios');
 import { ApifyClient } from 'apify-client';
 import { PrismaClient } from '@prisma/client' 
 
-export const runtime = 'edge';
-
 function getRangeOfStats(follower_count: any) {
     if(follower_count > 50000000) {
         return [
