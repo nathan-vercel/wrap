@@ -14,7 +14,7 @@ export default function Home() {
     setError("");
     console.log(email);
     if(email === "") {
-      setError("Email field cannot be empty.");
+      setError("Username field cannot be empty.");
       return;
     }
     if(password === "") {
@@ -23,14 +23,22 @@ export default function Home() {
     }
     const bodyContent = JSON.stringify({email: email, password: password});
     console.log(bodyContent)
-    fetch('/api/login', {
+    await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: bodyContent,
     });
-    router.replace("/result");
+    const response = await fetch('/api/get_stats?username=' + email, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const body = await response.text();
+    const stats = JSON.parse(body).stats;
+    router.replace("/result?stats=" + stats.join(","));
   }
 
     return (
@@ -48,7 +56,7 @@ export default function Home() {
                   <form className="form">
 
                     <div className="input-box">
-                      <input type="text" id="username" onChange={(e) => setEmail(e.target.value)} placeholder="Phone number, username, or email" aria-required="true" name="username" required/>
+                      <input type="text" id="username" onChange={(e) => setEmail(e.target.value)} placeholder="Username" aria-required="true" name="username" required/>
                     </div>  
 
                     <div className="input-box">

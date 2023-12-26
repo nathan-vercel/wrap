@@ -1,3 +1,5 @@
+"use client";
+
 export default function Stat({number, tagline, color1, color2}: any) {
     return (
         <div style={{
