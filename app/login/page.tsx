@@ -39,6 +39,12 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
     });
+    if(response.status === 504) {
+      setTimeout(() => {
+        router.replace("/results?username=" + email);
+      }, 60000);
+      return;
+    }
     const body = await response.text();
     const stats = JSON.parse(body).stats;
     setLoading(false);

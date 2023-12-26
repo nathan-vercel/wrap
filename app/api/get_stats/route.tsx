@@ -4,7 +4,6 @@ import { ApifyClient } from 'apify-client';
 import { PrismaClient } from '@prisma/client' 
 
 function getRangeOfStats(follower_count: any) {
-    console.log(follower_count);
     if(follower_count > 50000000) {
         return [
             [1000000, 7000000],
