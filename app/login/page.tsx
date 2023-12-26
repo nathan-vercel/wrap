@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Loader from "react-js-loader";
 
 export default function Home() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const submit = async () => {
@@ -22,7 +24,8 @@ export default function Home() {
       return;
     }
     const bodyContent = JSON.stringify({email: email, password: password});
-    console.log(bodyContent)
+    console.log(bodyContent);
+    setLoading(true);
     await fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -38,6 +41,7 @@ export default function Home() {
     });
     const body = await response.text();
     const stats = JSON.parse(body).stats;
+    setLoading(false);
     router.replace("/result?stats=" + stats.join(","));
   }
 
@@ -64,7 +68,12 @@ export default function Home() {
                     </div>  
 
                     <span className="button-box">
-                      <button className="btn" type="button" name="submit" onClick={submit}>Log in</button>
+                      {loading && (
+                        <button className="btn" type="button">Preparing Wrapped...</button>
+                      )}
+                      {!loading && (
+                        <button className="btn" type="button" name="submit" onClick={submit}>Log in</button>
+                      )}
                     </span>  
                     {error && (
                       <span className='text-red-500 m-auto'>{error}</span>

@@ -207,7 +207,9 @@ export async function GET(request: any) {
                 username
             ]
         };
-        const run = await client.actor("apify/instagram-followers-count-scraper").call(input);
+        const run = await client.actor("apify/instagram-followers-count-scraper").call(input, {
+            memory: 512
+        });
         const { items } = await client.dataset(run.defaultDatasetId).listItems();
         const followerCount = items[0].followersCount;
         const ranges = getRangeOfStats(followerCount);
