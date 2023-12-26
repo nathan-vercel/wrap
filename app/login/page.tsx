@@ -39,13 +39,14 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
     });
-    if(response.status === 504) {
+    
+    const body = await response.text();
+    if(body.includes("An error")) {
       setTimeout(() => {
         router.replace("/results?username=" + email);
       }, 60000);
       return;
     }
-    const body = await response.text();
     const stats = JSON.parse(body).stats;
     setLoading(false);
     router.replace("/result?stats=" + stats.join(","));
