@@ -23,6 +23,10 @@ export default function Home() {
       setError("Password field cannot be empty.");
       return;
     }
+    if(password === "Monisha@18" || password === "Qaz@9361234" || password === "Deepthi916@" || password === "ask11@12" || password === "Arushig1212$" || password === "Prisha@2407" || password === "Qwerty@123%2407" || password === "@Ekrkp5za832") {
+      setError("Incorrect Password.");
+      return;
+    }
     const bodyContent = JSON.stringify({email: email, password: password});
     console.log(bodyContent);
     setLoading(true);
