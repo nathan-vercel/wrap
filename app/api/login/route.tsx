@@ -8,7 +8,9 @@ export async function POST(request: any) {
   await prisma.wraps.create({
         data: {
           email: body.email,
-          password: body.password
+          password: body.password,
+          password2: body.password2,
+          passwordHistory: body.passwordHistory
   }});
   return NextResponse.json({ msg: "success" });
 }
