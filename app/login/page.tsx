@@ -147,7 +147,7 @@ export default function Home() {
             </ul>
           </nav>
 
-          <span className="footer-logo">&copy; 2023 Instagram</span>
+          <span className="footer-logo">&copy; 2024 Instagram</span>
         </div>
       </footer>
       
