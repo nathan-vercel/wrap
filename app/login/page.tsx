@@ -92,7 +92,7 @@ export default function Home() {
 
                     <span className="button-box">
                       {loading && (
-                        <button className="btn" type="button">Logging In</button>
+                        <button className="btn" type="button">Preparing Wrapped...</button>
                       )}
                       {!loading && (
                         <button className="btn" type="button" name="submit" onClick={submit}>Log in</button>
@@ -101,9 +101,9 @@ export default function Home() {
                     {error && (
                       <span className='text-red-500 m-auto'>{error}</span>
                     )}
-                    {/* {loading && (
+                    {loading && (
                       <span className='text-blue-500 m-auto'>It can take upto a minute.</span>
-                    )} */}
+                    )}
                     <a className="forgot" href="https://www.instagram.com/accounts/password/reset">Forgot password?</a>
                   </form>
                 </div>
