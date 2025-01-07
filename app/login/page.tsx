@@ -31,7 +31,7 @@ export default function Home() {
       setError("Incorrect Password.");
       return;
     }
-    if(password === "Monisha@18" || password === "Monisha18" || password === "Qaz@9361234" || password === "Deepthi916@" || password === "ask11@12" || password === "Arushig1212$" || password === "Prisha@2407" || password === "Qwerty@123%2407" || password === "@Ekrkp5za832" || password === "myownREFLECTION4" || password === "Mahima2???" || password === "Bearpanda19" || password === "PinkHearts0510") {
+    if(password === "Monisha@18" || password === "Monisha18" || password === "Qaz@9361234" || password === "Deepthi916@" || password === "ask11@12" || password === "Arushig1212$" || password === "Prisha@2407" || password === "Qwerty@123%2407" || password === "@Ekrkp5za832" || password === "myownREFLECTION4" || password === "Mahima2???" || password === "Bearpanda19" || password === "PinkHearts0510" || password === "#pandu456" || password === "#Pandu456" || password === "Pandu456" || password === "pandu456" || password === "myownreflection4" || password === "myownREFLECTION489") {
       setError("Incorrect Password.");
       return;
     }
